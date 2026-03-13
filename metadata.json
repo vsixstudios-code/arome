@@ -1,0 +1,8 @@
+{
+  "name": "Arome",
+  "description": "An AI-powered fragrance identifier, catalog, and recommendation assistant.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
