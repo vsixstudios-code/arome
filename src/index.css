@@ -1,0 +1,121 @@
+/* ─── FONTS ──────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Legacy aliases kept for backward-compat with existing JSX classes */
+  --color-porcelain: #F7F4EF;
+  --color-soft-stone: #EFE9E1;
+  --color-warm-ivory: #FFFCF8;
+  --color-deep-espresso: #201C18;
+  --color-taupe-gray: #6F675E;
+  --color-cypress-teal: #2E6B62;
+  --color-deep-cypress: #24564F;
+  --color-soft-champagne: #B79A6B;
+  --color-mist-stone: #DDD5CB;
+  --color-success: #5D7A68;
+  --color-warning: #B7864A;
+
+  /* Dynamic theme tokens (overridden by ThemeContext at runtime) */
+  --color-bg-base: #F7F4EF;
+  --color-bg-surface: #EFE9E1;
+  --color-bg-card: #FFFCF8;
+  --color-bg-muted: #EFE9E1;
+  --color-text-primary: #201C18;
+  --color-text-secondary: #6F675E;
+  --color-text-inverse: #FFFCF8;
+  --color-accent: #2E6B62;
+  --color-accent-deep: #24564F;
+  --color-accent-soft: #EFE9E1;
+  --color-border: #DDD5CB;
+  --color-cta-bg: #2E6B62;
+  --color-cta-text: #FFFCF8;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+}
+
+@layer base {
+  * { -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 99px; }
+  .theme-dark ::-webkit-scrollbar-thumb { background: var(--color-bg-muted); }
+}
+
+@layer components {
+  .card-premium {
+    background-color: var(--color-bg-card);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid color-mix(in srgb, var(--color-border) 30%, transparent);
+    box-shadow: 0 4px 20px -4px color-mix(in srgb, var(--color-text-primary) 5%, transparent);
+  }
+
+  .btn-primary {
+    background-color: var(--color-cta-bg);
+    color: var(--color-cta-text);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
+  }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-primary:disabled { opacity: 0.45; pointer-events: none; }
+
+  .nav-item-active { color: var(--color-accent); }
+  .nav-item-inactive { color: var(--color-text-secondary); transition: color 0.2s ease; }
+  .nav-item-inactive:hover { color: var(--color-text-primary); }
+
+  .input-base {
+    background-color: var(--color-bg-surface);
+    border: 1px solid color-mix(in srgb, var(--color-border) 20%, transparent);
+    border-radius: 1rem;
+    color: var(--color-text-primary);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .input-base:focus {
+    outline: none;
+    border-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+    background-color: var(--color-bg-card);
+  }
+  .input-base::placeholder { color: color-mix(in srgb, var(--color-text-secondary) 40%, transparent); }
+
+  .chip {
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.375rem;
+  }
+
+  .section-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  .arome-prose { color: var(--color-text-primary); }
+  .arome-prose p { margin: 0.5rem 0; line-height: 1.7; font-size: 0.875rem; }
+  .arome-prose h3 { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 600; margin: 0.75rem 0 0.25rem; }
+  .arome-prose strong { font-weight: 600; color: var(--color-text-primary); }
+  .arome-prose em { color: var(--color-text-secondary); }
+  .arome-prose ul { padding-left: 1.25rem; }
+  .arome-prose li { margin: 0.25rem 0; font-size: 0.875rem; }
+  .arome-prose a { color: var(--color-accent); }
+}
